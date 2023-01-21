@@ -46,16 +46,38 @@ Dwbdosdtq rhms nbbzdbzs btohczszs mnm oqnhcdms rtms hm btkoz pth neehbhz cdrdqtm
 #include <iostream>
 #include <string>
 
-std::string encrypt_caesar(std::string str) {
-	std::string 
+std::string encrypt_caesar(std::string str, int offset) {
+	std::string result = "";
+	int codeLetter_A = 65;
+	int codeLetter_a = 97;
+	int alphabetLength = 26;
+
 	for (int i = 1; i < str.length(); i++) {
-		if (inputText[i - 1] == ' ' && inputText[i] != ' ') {
-			numberWords++;
+		int numberSymbol = int(str[i]);
+		if (numberSymbol >= codeLetter_A && numberSymbol < (codeLetter_A + alphabetLength)) {
+			numberSymbol -= codeLetter_A;
+			numberSymbol = (numberSymbol + offset) % alphabetLength;
+			numberSymbol += codeLetter_A;
+		} 
+		if (numberSymbol >= codeLetter_a && numberSymbol < (codeLetter_a + alphabetLength)) {
+			numberSymbol -= codeLetter_a;
+			numberSymbol = (numberSymbol + offset) % alphabetLength;
+			numberSymbol += codeLetter_a;
 		}
+		result += numberSymbol;
+		return result;
 	}
 }
 
 int main() {
+	std::string inputText;
+	std::cout << "Enter the text: ";
+	std::getline(std::cin, inputText);
+
+	int offsetSymbol;
+	std::cout << "Enter the character offset: ";
+	std::cin >> offsetSymbol;
+
 	int modeNumber;
 	std::cout << "Enter the mode number, 0 - encrypt, 1 - decrypt: ";
 	std::cin >> modeNumber;
@@ -65,16 +87,11 @@ int main() {
 		std::cin >> modeNumber;
 	}
 
-	std::string inputText;
-	std::cout << "Enter string: ";
-	std::getline(std::cin, inputText);
-
-	int numberWords = 0;
 
 	if (inputText[0] != ' ') {
-		numberWords++;
 	}
 
-	
-	std::cout << "Answer: " << numberWords;
+
+		
+	std::cout << encrypt_caesar(inputText, offsetSymbol);
 }
