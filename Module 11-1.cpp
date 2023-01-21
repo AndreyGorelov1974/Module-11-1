@@ -46,13 +46,13 @@ Dwbdosdtq rhms nbbzdbzs btohczszs mnm oqnhcdms rtms hm btkoz pth neehbhz cdrdqtm
 #include <iostream>
 #include <string>
 
-std::string encrypt_caesar(std::string str, int offset) {
+std::string encrypt_caesar (std::string str, int offset) {
 	std::string result = "";
 	int codeLetter_A = 65;
 	int codeLetter_a = 97;
 	int alphabetLength = 26;
 
-	for (int i = 1; i < str.length(); i++) {
+	for (int i = 0; i < str.length(); i++) {
 		int numberSymbol = int(str[i]);
 		if (numberSymbol >= codeLetter_A && numberSymbol < (codeLetter_A + alphabetLength)) {
 			numberSymbol -= codeLetter_A;
@@ -65,9 +65,15 @@ std::string encrypt_caesar(std::string str, int offset) {
 			numberSymbol += codeLetter_a;
 		}
 		result += numberSymbol;
-		return result;
 	}
+	return result;
 }
+
+std::string decrypt_caesar (std::string str, int offset) {
+	return encrypt_caesar (str, -offset);
+}
+
+
 
 int main() {
 	std::string inputText;
@@ -88,10 +94,14 @@ int main() {
 	}
 
 
-	if (inputText[0] != ' ') {
+	if (modeNumber == 0) {
+		std::cout << encrypt_caesar (inputText, offsetSymbol);
+	}
+	else {
+		std::cout << decrypt_caesar (inputText, offsetSymbol);
+
 	}
 
 
 		
-	std::cout << encrypt_caesar(inputText, offsetSymbol);
 }
