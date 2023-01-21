@@ -49,7 +49,7 @@ std::string encrypt_caesar (std::string str, int offset) {
 	int alphabetLength = 26;
 
 	for (int i = 0; i < str.length(); i++) {
-		int numberSymbol = int(str[i]);
+		int numberSymbol = (int) str[i];
 		if (numberSymbol >= codeLetter_A && numberSymbol < (codeLetter_A + alphabetLength)) {
 			numberSymbol -= codeLetter_A;
 			numberSymbol = (numberSymbol + offset) % alphabetLength;
