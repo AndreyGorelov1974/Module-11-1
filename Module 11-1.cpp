@@ -62,7 +62,7 @@ std::string encrypt_caesar (std::string str, int offset) {
 			if (numberSymbol < 0) numberSymbol += alphabetLength;
 			numberSymbol += codeLetter_a;
 		}
-		result += numberSymbol;
+		result += (char) numberSymbol;
 	}
 	return result;
 }
