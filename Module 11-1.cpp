@@ -19,15 +19,11 @@ Ymj vznhp gwtbs ktc ozrux tajw ymj qfed itl
 
 Пример 2
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation
-ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum
+Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum
 
 Результат
 
-Knqdl hortl cnknq rhs zlds bnmrdbsdstq zchohrbhmf dkhs rdc cn dhtrlnc sdlonq hmbhchctms ts kzanqd ds cnknqd lzfmz zkhptz Ts dmhl zc lhmhl udmhzl pthr mnrsqtc dwdqbhszshnm 
-tkkzlbn kzanqhr mhrh ts zkhptho dw dz bnllncn bnmrdptzs Cthr ztsd hqtqd cnknq hm qdoqdgdmcdqhs hm unktoszsd udkhs drrd bhkktl cnknqd dt etfhzs mtkkz ozqhzstq 
-Dwbdosdtq rhms nbbzdbzs btohczszs mnm oqnhcdms rtms hm btkoz pth neehbhz cdrdqtms lnkkhs zmhl hc drs kzanqtl
+Knqdl hortl cnknq rhs zlds bnmrdbsdstq zchohrbhmf dkhs rdc cn dhtrlnc sdlonq hmbhchctms ts kzanqd ds cnknqd lzfmz zkhptz Ts dmhl zc lhmhl udmhzl pthr mnrsqtc dwdqbhszshnm tkkzlbn kzanqhr mhrh ts zkhptho dw dz bnllncn bnmrdptzs Cthr ztsd hqtqd cnknq hm qdoqdgdmcdqhs hm unktoszsd udkhs drrd bhkktl cnknqd dt etfhzs mtkkz ozqhzstq Dwbdosdtq rhms nbbzdbzs btohczszs mnm oqnhcdms rtms hm btkoz pth neehbhz cdrdqtms lnkkhs zmhl hc drs kzanqtl
 
 Рекомендации
 Уже имея функцию encrypt_caesar, функцию decrypt_caesar можно реализовать в одну строчку.
@@ -57,11 +53,13 @@ std::string encrypt_caesar (std::string str, int offset) {
 		if (numberSymbol >= codeLetter_A && numberSymbol < (codeLetter_A + alphabetLength)) {
 			numberSymbol -= codeLetter_A;
 			numberSymbol = (numberSymbol + offset) % alphabetLength;
+			if (numberSymbol < 0) numberSymbol += alphabetLength;
 			numberSymbol += codeLetter_A;
 		} 
 		if (numberSymbol >= codeLetter_a && numberSymbol < (codeLetter_a + alphabetLength)) {
 			numberSymbol -= codeLetter_a;
 			numberSymbol = (numberSymbol + offset) % alphabetLength;
+			if (numberSymbol < 0) numberSymbol += alphabetLength;
 			numberSymbol += codeLetter_a;
 		}
 		result += numberSymbol;
